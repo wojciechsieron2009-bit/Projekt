@@ -1,0 +1,21 @@
+/* Reset marginesów */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Zmienne globalne */
+:root {
+    --primary-color: #2c3e50;    /* Główny kolor firmy (np. granatowy) */
+    --accent-color: #e74c3c;     /* Kolor przycisków/akcentów (np. czerwony) */
+    --text-color: #333333;       /* Kolor tekstu */
+    --bg-light: #f8f9fa;         /* Jasne tło dla sekcji */
+    --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--main-font);
+    color: var(--text-color);
+    line-height: 1.6;
+}
