@@ -1,4 +1,6 @@
-/* Reset marginesów */
+/* ==========================================================================
+   Reset marginesów i ustawienia globalne
+   ========================================================================== */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -14,10 +16,15 @@
     --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;     /* Płynne przewijanie do sekcji po kliknięciu w menu */
+}
+
 body {
     font-family: var(--main-font);
     color: var(--text-color);
     line-height: 1.6;
+    background-color: #ffffff;
 }
 
 /* ==========================================================================
@@ -59,4 +66,96 @@ nav ul li a {
 /* Efekt po najechaniu myszką na link */
 nav ul li a:hover {
     color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Sekcja Galerii (Miejsce na zdjęcia)
+   ========================================================================== */
+
+.gallery-container {
+    padding: 5rem 5%;
+    background-color: var(--bg-light); /* Jasne tło idealnie odcina się od bieli */
+    text-align: center;
+}
+
+.gallery-container h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+/* Ciekawy detal: krótka linia pod nagłówkiem galerii */
+.gallery-container h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0 auto;
+}
+
+/* Elastyczna siatka zdjęć (Grid) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Kontener na pojedyncze zdjęcie */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    aspect-ratio: 4 / 3; /* Wymusza równe proporcje dla wszystkich kafelków */
+}
+
+/* Efekt uniesienia zdjęcia po najechaniu myszką */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Stylizacja samego obrazka wewnątrz kafelka */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zdjęcie wypełni kadr bez zniekształceń i rozciągania */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Delikatny zoom zdjęcia przy najechaniu na kafelek */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Sekcja O Nas (Sekcja z kotwicą)
+   ========================================================================== */
+
+.about-section {
+    padding: 6rem 5%;
+    background-color: #ffffff;
+    text-align: center;
+    /* Zapobiega chowaniu się nagłówka sekcji pod przyklejonym menu (header) podczas przewijania */
+    scroll-margin-top: 70px; 
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.about-content {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555555;
 }
